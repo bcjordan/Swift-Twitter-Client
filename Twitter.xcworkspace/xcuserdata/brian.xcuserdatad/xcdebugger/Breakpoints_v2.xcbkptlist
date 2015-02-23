@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Twitter/MainTimelineTweetTableViewCell.swift"
-            timestampString = "446358833.622417"
+            timestampString = "446361660.289978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "pressRetweet(_:)"
             landmarkType = "5">
          </BreakpointContent>

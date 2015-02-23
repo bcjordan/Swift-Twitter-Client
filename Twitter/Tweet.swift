@@ -22,7 +22,7 @@ class Tweet: NSObject {
         tweetId = dictionary["id_str"] as? String
         
         var formatter = NSDateFormatter()
-        // Sun Feb 22 01:13:47 +0000 2015
+        // e.g. Sun Feb 22 01:13:47 +0000 2015
         formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
         createdAt = formatter.dateFromString(createdAtString!)
         

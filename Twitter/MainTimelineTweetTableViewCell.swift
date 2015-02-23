@@ -22,6 +22,9 @@ class MainTimelineTweetTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        setNeedsLayout()
+        setNeedsUpdateConstraints()
+        layoutIfNeeded()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

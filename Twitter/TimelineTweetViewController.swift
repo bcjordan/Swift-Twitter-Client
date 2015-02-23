@@ -27,6 +27,7 @@ class TimelineTweetViewController: UIViewController {
         if tweet != nil {
             println("Tweet is \(tweet)")
         }
+        
         if let user = tweet?.user {
             if let profileImageUrl = user.profileImageUrl {
                 var url: NSURL = NSURL(string: profileImageUrl)!
@@ -34,6 +35,7 @@ class TimelineTweetViewController: UIViewController {
                                 self.userImage.setImageWithURL(url)
             }
                         usernameLabel.text = user.screenname
+            self.navigationItem.title = user.screenname
             
         }
         
@@ -42,11 +44,17 @@ class TimelineTweetViewController: UIViewController {
             tweetText.text = tweet.text
         }
         
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func pressReply() {
+        navigationController?.performSegueWithIdentifier("replyToTweetSegue", sender: self)
     }
 
     @IBAction func retweetPressed(sender: AnyObject) {
