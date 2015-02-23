@@ -1,10 +1,10 @@
 ## Twitter Lite
 
-This is a bare bones twitter app which allows users to read and compose tweets using the [Twitter API](https://apps.twitter.com/).
+This is a bare bones Twitter app which allows users to read and compose tweets using the [Twitter API](https://apps.twitter.com/).
 
 To configure for local testing, add your Twitter API keys in the file `Twitter/TwitterClient.swift`.
 
-Time spent: `6 hours`
+Time spent: `6.5 hours`
 
 ### Features
 
