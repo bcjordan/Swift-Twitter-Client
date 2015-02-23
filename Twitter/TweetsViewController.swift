@@ -22,6 +22,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         refreshTweets()
         tableView.delegate = self
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 88.0;
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull for Fresh Tweets")
         self.refreshControl.addTarget(self, action: "refreshTweets", forControlEvents: UIControlEvents.ValueChanged)
