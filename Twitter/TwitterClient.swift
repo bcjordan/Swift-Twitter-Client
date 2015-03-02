@@ -74,11 +74,24 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             
             completion(tweets: tweets, error: nil)
             
-            }, failure: { (operatioy6n: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 completion(tweets:nil, error: error)
         })
     }
-    
+
+    func mentionsTimelineWithParams(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/mentions_timeline.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            //println("home timeline: \(response)")
+            
+            var tweets = Tweet.tweetsWithArray(response as [NSDictionary])
+            
+            completion(tweets: tweets, error: nil)
+            
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completion(tweets:nil, error: error)
+        })
+    }
+
     func openURL(url: NSURL) {
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
             println("Got the access token!")

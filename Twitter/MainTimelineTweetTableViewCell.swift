@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TweetViewDelegate: class {
+    func picturePressed(user: User)
+}
+
 class MainTimelineTweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetImage: UIImageView!
 
@@ -18,6 +22,9 @@ class MainTimelineTweetTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var retweetButton: UIButton!
     var tweetId: String?
+    var user: User?
+    
+    var delegate: TweetViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +32,14 @@ class MainTimelineTweetTableViewCell: UITableViewCell {
         setNeedsLayout()
         setNeedsUpdateConstraints()
         layoutIfNeeded()
+        
+        tweetImage.userInteractionEnabled = true
+        tweetImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "profilePressed"))
+    }
+    
+    func profilePressed() {
+        print("pressed")
+        self.delegate?.picturePressed(user!)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -37,7 +52,7 @@ class MainTimelineTweetTableViewCell: UITableViewCell {
         if let user = tweet.user {
             tweetImage.setImageWithURL(NSURL(string: user.profileImageUrl!))
             usernameLabel.text = user.screenname
-
+            self.user = user
         }
         
         timestampLabel.text = tweet.createdAtString

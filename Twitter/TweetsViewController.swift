@@ -8,11 +8,24 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+protocol MainViewControllerDelegate: class{
+    func toggleMenu()
+}
+
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TweetViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]?
     var refreshControl:UIRefreshControl!
+    
+    var delegate: MainViewControllerDelegate?
+    
+    var tweetsToShow: String? = "timeline"
+    
+    func setTweetsToShow(types: String) {
+        self.tweetsToShow = types
+        self.refreshTweets()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +36,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         
         self.tableView.rowHeight = UITableViewAutomaticDimension;
-//        self.tableView.estimatedRowHeight = 88.0;
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull for Fresh Tweets")
@@ -32,7 +44,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Tweet", style: .Plain, target: self, action: "pressComposeTweet")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "pressLogout")
-        self.navigationItem.title = "Timeline"
+        self.navigationItem.title = "\(tweetsToShow!)"
+        
+        self.delegate?.toggleMenu()
     }
     
     func pressComposeTweet() {
@@ -44,15 +58,24 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func refreshTweets() {
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-        })
+        if (self.tweetsToShow == "mentions") {
+            TwitterClient.sharedInstance.mentionsTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            })
+        } else {
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            })
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let vc = self.tableView.dequeueReusableCellWithIdentifier("MainTimelineTweetTableViewCell") as MainTimelineTweetTableViewCell
+        vc.delegate = self
         if let tweet = tweets?[indexPath.row] {
             vc.setTweet(tweet)
         }
@@ -80,6 +103,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 vc.setTweet(tweet)
             }
         }
+    }
+    
+    func picturePressed(user: User) {
+        var profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
+        profileViewController.setUser(user)
+self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 
     /*

@@ -22,7 +22,8 @@ class ViewController: UIViewController {
             
             if user != nil {
                 // perform segue
-                self.performSegueWithIdentifier("loginSegue", sender: self)
+                // self.performSegueWithIdentifier("loginSegue", sender: self)
+                NSNotificationCenter.defaultCenter().postNotificationName("userLoggedIn", object: nil)
             } else {
                 // handle login error
             }
