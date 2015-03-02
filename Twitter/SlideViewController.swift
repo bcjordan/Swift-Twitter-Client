@@ -48,18 +48,8 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
     }
     
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
-        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
-        
-        switch(recognizer.state) {
-        case UIGestureRecognizerState.Began:
+        if (recognizer.state == UIGestureRecognizerState.Began) {
             self.toggleMenu()
-//        case UIGestureRecognizerState.Changed:
-//            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
-//            recognizer.setTranslation(CGPointZero, inView: view)
-//        case UIGestureRecognizerState.Ended:
-//            
-        default:
-            break
         }
     }
     
