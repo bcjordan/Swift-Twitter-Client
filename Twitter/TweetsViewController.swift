@@ -13,7 +13,7 @@ protocol MainViewControllerDelegate: class{
     func toggleMenu()
 }
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TweetViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]?
@@ -62,6 +62,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let vc = self.tableView.dequeueReusableCellWithIdentifier("MainTimelineTweetTableViewCell") as MainTimelineTweetTableViewCell
+        vc.delegate = self
         if let tweet = tweets?[indexPath.row] {
             vc.setTweet(tweet)
         }
@@ -89,6 +90,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 vc.setTweet(tweet)
             }
         }
+    }
+    
+    func picturePressed(user: User) {
+        var profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
+        profileViewController.setUser(user)
+self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 
     /*

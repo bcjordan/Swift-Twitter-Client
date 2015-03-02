@@ -13,10 +13,10 @@ Time spent: `6.5 hours`
 
 # Profile page
 - [x] Contains the user header view
-- [] Contains a section with the users basic stats: # tweets, # following, # followers
+- [x] Contains a section with the users basic stats: # tweets, # following, # followers
 
 # Home Timeline
-- [] Tapping on a user image should bring up that user's profile page
+- [x] Tapping on a user image should bring up that user's profile page
 
 ### Walkthrough
 
