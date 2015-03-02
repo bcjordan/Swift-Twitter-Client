@@ -8,11 +8,18 @@
 
 import UIKit
 
+
+protocol MainViewControllerDelegate: class{
+    func toggleMenu()
+}
+
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var tweets: [Tweet]?
     var refreshControl:UIRefreshControl!
+    
+    var delegate: MainViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +40,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Tweet", style: .Plain, target: self, action: "pressComposeTweet")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "pressLogout")
         self.navigationItem.title = "Timeline"
+        
+        self.delegate?.toggleMenu()
     }
     
     func pressComposeTweet() {
