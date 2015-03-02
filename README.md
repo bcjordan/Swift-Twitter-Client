@@ -1,10 +1,10 @@
-## Twitter Lite
+## Twitter Lite XL
 
-This is a bare bones Twitter app which allows users to read and compose tweets using the [Twitter API](https://apps.twitter.com/).
+This is a simple Twitter app which allows users to read and compose tweets using the [Twitter API](https://apps.twitter.com/).
 
 To configure for local testing, add your Twitter API keys in the file `Twitter/TwitterClient.swift`.
 
-Time spent: `6.5 hours`
+Time spent: `6.5 hours` & `6 hours`
 
 # Hamburger menu
 - [x] Dragging anywhere in the view should reveal the menu.
@@ -19,5 +19,8 @@ Time spent: `6.5 hours`
 - [x] Tapping on a user image should bring up that user's profile page
 
 ### Walkthrough
+
+![](http://i.imgur.com/nSc2VWU.gif)
+
 
 ![](http://i.imgur.com/qF493tF.gif)
