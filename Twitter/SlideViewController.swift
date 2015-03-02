@@ -59,8 +59,10 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
         mainViewCtrl!.didMoveToParentViewController(self)
     }
     
+    // Toggles a dedicated menu view sliding in and out
+    // Kudos to Anoop Tomar for sharing his technique for slide-in view management on the Facebook group
     func toggleMenu() {
-        if(menuViewCtrl == nil){
+        if (menuViewCtrl == nil) {
             menuViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("menuVC") as? MenuViewController
             menuViewCtrl?.delegate = self
             
@@ -69,11 +71,11 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
             menuViewCtrl?.didMoveToParentViewController(mainViewCtrl)
             
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                self.mainViewCtrl!.view.frame.origin.x = self.mainViewCtrl!.view.frame.width - 50
+                    self.mainViewCtrl!.view.frame.origin.x = self.mainViewCtrl!.view.frame.width - 50
                 }, completion: nil)
-        }else{
+        } else {
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                self.mainViewCtrl!.view.frame.origin.x = 0
+                    self.mainViewCtrl!.view.frame.origin.x = 0
                 }, completion: {
                     finished in
                     
@@ -88,7 +90,6 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
     
     func goToTimeline() {
         if (mainViewCtrl?.topViewController is TweetsViewController) {
-            
         } else {
             mainViewCtrl?.popToRootViewControllerAnimated(true)
         }

@@ -24,3 +24,8 @@ Time spent: `6.5 hours` & `6 hours`
 
 
 ![](http://i.imgur.com/qF493tF.gif)
+
+# Credits
+
+- Kudos to Anoop Tomar for sharing his technique for slide-in view management on the Facebook group
+- Uses pods `AFNetworking` and `BDBOAuth1Manager`
