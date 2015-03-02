@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol MainViewControllerDelegate: class{
     func toggleMenu()
 }
@@ -21,6 +20,13 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var delegate: MainViewControllerDelegate?
     
+    var tweetsToShow: String? = "timeline"
+    
+    func setTweetsToShow(types: String) {
+        self.tweetsToShow = types
+        self.refreshTweets()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +36,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         
         self.tableView.rowHeight = UITableViewAutomaticDimension;
-//        self.tableView.estimatedRowHeight = 88.0;
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull for Fresh Tweets")
@@ -39,7 +44,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Tweet", style: .Plain, target: self, action: "pressComposeTweet")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: "pressLogout")
-        self.navigationItem.title = "Timeline"
+        self.navigationItem.title = "\(tweetsToShow!)"
         
         self.delegate?.toggleMenu()
     }
@@ -53,11 +58,19 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func refreshTweets() {
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
-            self.tweets = tweets
-            self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
-        })
+        if (self.tweetsToShow == "mentions") {
+            TwitterClient.sharedInstance.mentionsTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            })
+        } else {
+            TwitterClient.sharedInstance.homeTimelineWithParams(nil, completion: { (tweets, error) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            })
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

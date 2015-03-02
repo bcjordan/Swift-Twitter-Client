@@ -21,7 +21,7 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
         mainViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("TweetsViewController") as? UINavigationController
         
         if User.currentUser != nil {
-            
+            goToMentions()
         } else {
             goToLogin()
         }
@@ -87,18 +87,29 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
                 }, completion: {
                     finished in
                     
-                    self.menuViewCtrl!.view.removeFromSuperview()
-                    self.menuViewCtrl!.removeFromParentViewController()
-                    self.menuViewCtrl = nil
+                    if (self.menuViewCtrl != nil) {
+                        self.menuViewCtrl!.view.removeFromSuperview()
+                        self.menuViewCtrl!.removeFromParentViewController()
+                        self.menuViewCtrl = nil
+                    }
             })
         }
     }
     
     func goToTimeline() {
+        if (mainViewCtrl?.topViewController is TweetsViewController) {
+            
+        } else {
+            mainViewCtrl?.popToRootViewControllerAnimated(true)
+        }
+        
+        var tweetsController = mainViewCtrl?.topViewController as TweetsViewController
+        tweetsController.setTweetsToShow("timeline")
         self.toggleMenu()
     }
     
     func goToProfile() {
+        mainViewCtrl?.popToRootViewControllerAnimated(true)
         var profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
         profileViewController.setUser(User.currentUser!)
         mainViewCtrl?.pushViewController(profileViewController, animated: true)
@@ -106,6 +117,14 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
     }
     
     func goToMentions() {
+        if (mainViewCtrl?.topViewController is TweetsViewController) {
+            
+        } else {
+            mainViewCtrl?.popToRootViewControllerAnimated(true)
+        }
+        
+        var tweetsController = mainViewCtrl?.topViewController as TweetsViewController
+        tweetsController.setTweetsToShow("mentions")
         self.toggleMenu()
     }
 }

@@ -22,7 +22,6 @@
 		D3293B691A9AC20B00EB1982 /* TimelineTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3293B681A9AC20B00EB1982 /* TimelineTweetViewController.swift */; };
 		D3293B6B1A9AC22700EB1982 /* MainTimelineTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3293B6A1A9AC22700EB1982 /* MainTimelineTweetTableViewCell.swift */; };
 		D38581C61AA3F4A500304EC7 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38581C51AA3F4A500304EC7 /* SlideViewController.swift */; };
-		D38581C81AA3F74C00304EC7 /* SlideTBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38581C71AA3F74C00304EC7 /* SlideTBController.swift */; };
 		D38581CA1AA3FE3C00304EC7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38581C91AA3FE3C00304EC7 /* MenuViewController.swift */; };
 		D38581CC1AA410C800304EC7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38581CB1AA410C800304EC7 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +58,6 @@
 		D3293B681A9AC20B00EB1982 /* TimelineTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineTweetViewController.swift; sourceTree = "<group>"; };
 		D3293B6A1A9AC22700EB1982 /* MainTimelineTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTimelineTweetTableViewCell.swift; sourceTree = "<group>"; };
 		D38581C51AA3F4A500304EC7 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
-		D38581C71AA3F74C00304EC7 /* SlideTBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTBController.swift; sourceTree = "<group>"; };
 		D38581C91AA3FE3C00304EC7 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		D38581CB1AA410C800304EC7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EE7304BF2473FA0604AEB6D5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				D3208A6A1A9AD85900188D20 /* ComposeTweetViewController.swift */,
 				D3293B6A1A9AC22700EB1982 /* MainTimelineTweetTableViewCell.swift */,
 				D38581C51AA3F4A500304EC7 /* SlideViewController.swift */,
-				D38581C71AA3F74C00304EC7 /* SlideTBController.swift */,
 				D38581C91AA3FE3C00304EC7 /* MenuViewController.swift */,
 				D38581CB1AA410C800304EC7 /* ProfileViewController.swift */,
 			);
@@ -330,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D38581C81AA3F74C00304EC7 /* SlideTBController.swift in Sources */,
 				D3208A6B1A9AD85900188D20 /* ComposeTweetViewController.swift in Sources */,
 				D3293B601A9AB0BD00EB1982 /* User.swift in Sources */,
 				D3293B691A9AC20B00EB1982 /* TimelineTweetViewController.swift in Sources */,
