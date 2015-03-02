@@ -11,20 +11,40 @@ import UIKit
 
 
 class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNavigationDelegate, UIGestureRecognizerDelegate {
-    var mainViewCtrl: TweetsViewController?
+    var mainViewCtrl: UINavigationController?
     var menuViewCtrl: MenuViewController?
     var currentState: UIGestureRecognizerState!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("TweetsViewController") as? TweetsViewController
+        mainViewCtrl = self.storyboard?.instantiateViewControllerWithIdentifier("TweetsViewController") as? UINavigationController
         
-        mainViewCtrl?.delegate = self
+        if User.currentUser != nil {
+            
+        } else {
+            goToLogin()
+        }
+
         addMainView()
         
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
         self.view.addGestureRecognizer(panGestureRecognizer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userDidLogout", name: userDidLogoutNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "userLoggedIn", name: "userLoggedIn", object: nil)
+    }
+    
+    func goToLogin() {
+        mainViewCtrl?.pushViewController(self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as UIViewController, animated: false)
+    }
+    
+    func userLoggedIn() {
+        mainViewCtrl?.popToRootViewControllerAnimated(false)
+    }
+    
+    func userDidLogout() {
+        goToLogin()
     }
     
     func handlePanGesture(recognizer: UIPanGestureRecognizer) {
@@ -79,6 +99,9 @@ class SlideViewController: UIViewController, MainViewControllerDelegate, SlideNa
     }
     
     func goToProfile() {
+        var profileViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
+        profileViewController.setUser(User.currentUser!)
+        mainViewCtrl?.pushViewController(profileViewController, animated: true)
         self.toggleMenu()
     }
     

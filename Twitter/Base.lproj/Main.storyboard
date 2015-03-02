@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -32,12 +32,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="724" y="129"/>
+            <point key="canvasLocation" x="863" y="1040"/>
         </scene>
         <!--Tweets View Controller-->
         <scene sceneID="FlE-Gi-G1B">
             <objects>
-                <viewController storyboardIdentifier="TweetsViewController" id="NcV-Ik-oZg" customClass="TweetsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NcV-Ik-oZg" customClass="TweetsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1HX-gj-BkZ"/>
                         <viewControllerLayoutGuide type="bottom" id="cP2-jr-56t"/>
@@ -313,6 +313,60 @@
             </objects>
             <point key="canvasLocation" x="294" y="790"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="4CF-iK-5rQ">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" id="S5z-HT-jmY" customClass="ProfileViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EjX-yX-NfG"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Fy-AO-aHH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jwV-yN-Oli">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="em3-PB-OY7">
+                                <rect key="frame" x="79" y="28" width="163" height="126"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRA-Fj-gx3">
+                                <rect key="frame" x="42" y="218" width="20" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="84" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPr-QL-BIL">
+                                <rect key="frame" x="150" y="218" width="20" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceu-6X-1F8">
+                                <rect key="frame" x="251" y="218" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@bcjordan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ova-3K-TIh">
+                                <rect key="frame" x="120" y="180" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="numFollowersLAbel" destination="dPr-QL-BIL" id="I6B-fN-kPi"/>
+                        <outlet property="numFollowingLabel" destination="ceu-6X-1F8" id="pDs-j8-Tk7"/>
+                        <outlet property="numTweetsLabel" destination="dRA-Fj-gx3" id="gmT-MH-Nau"/>
+                        <outlet property="profileImageView" destination="em3-PB-OY7" id="Xuo-cV-xDz"/>
+                        <outlet property="usernameLabel" destination="Ova-3K-TIh" id="xzJ-lA-JwK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EtR-mG-WHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1709" y="790"/>
+        </scene>
         <!--Item-->
         <scene sceneID="9CF-Nh-dhl">
             <objects>
@@ -439,28 +493,10 @@
             </objects>
             <point key="canvasLocation" x="2232" y="798"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qGi-ry-XOF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MMt-2k-Uiz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yel-z0-9p2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="zDc-A8-TEs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="guE-kq-tIr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="74" y="129"/>
-        </scene>
         <!--Item-->
         <scene sceneID="ebh-iY-KYo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GR7-zs-NKJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TweetsViewController" automaticallyAdjustsScrollViewInsets="NO" id="GR7-zs-NKJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="qBd-WV-Piq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pNA-80-qYb">
